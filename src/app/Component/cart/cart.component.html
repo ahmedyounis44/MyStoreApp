@@ -1,0 +1,26 @@
+
+<div *ngIf="CartProduct.length; else noCart" class="cart-container">
+  <div class="cart-panel">
+      <div *ngFor="let cartProduct of CartProduct | orderBy: 'id'" class="cart-item">
+          <img class="img" src='{{cartProduct.url}}'>
+          <div class="cart-item-details">
+              <div class="">{{ cartProduct.name}}</div>
+              <div class="">$ {{ cartProduct.price}}</div>
+              <div class="">
+                  <input name="amount"  (ngModelChange)="valueChange(cartProduct.id, $event)"  [(ngModel)]="cartProduct.amount" class="number-input" type="number"/>
+
+              </div>
+
+          </div>
+      </div>
+      <div class="cart-item"><b>Total: ${{ totalPrice }}</b></div>
+  </div>
+  <div class="form-margin">
+          <app-user-form [total]="totalPrice"  (checkoutSuccess)="checkoutSuccess($event)" ></app-user-form>
+  </div>
+</div>
+<ng-template #noCart>
+  <div class="empty-cart-message">
+  Cart is Empty! Please, <a class="alink" routerLink="/"> Back to product List</a>.
+  </div>
+</ng-template>

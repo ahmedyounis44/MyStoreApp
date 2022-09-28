@@ -1,0 +1,21 @@
+.btn{
+  background-color: #33B5E5;
+  margin-top: 20px;
+  height: 30px;
+  width: 100px;
+  border: 1px solid #33B5E5;
+  border-radius: 5%;
+  color: white;
+
+  }
+  .alert-danger{
+    color: rgb(244, 78, 78);
+    font-size: small;
+  }
+  .input{
+    width: 100%;
+
+  }
+  p{
+    margin-bottom: 3px
+  }

@@ -1,0 +1,48 @@
+<form class="form-margin" #form="ngForm"  (ngSubmit)="onSubmit()">
+<div class="input">
+<p><label>Full Name: </label></p>
+  <input type='text' #fullname="ngModel" name='fullname' required minlength="3"  placeholder="(minlength 3 characters) " [(ngModel)]="model.fullname">
+  <div *ngIf="fullname?.invalid && (fullname?.dirty || fullname?.touched)" class="alert-danger">
+    <div *ngIf="fullname?.errors?.['required']">
+         Name is required.
+    </div>
+    <div *ngIf="fullname?.errors?.['minlength']">
+        Name must be at least 3 characters long.
+    </div>
+
+
+</div>
+</div>
+<div class="input">
+  <p><label>Address: </label></p>
+  <input type='text' name='address' #address="ngModel"   required  minlength="6"  placeholder="(minlength 6 characters )" [(ngModel)]="model.address">
+  <div *ngIf="address?.invalid && (address?.dirty || address?.touched)" class="alert-danger">
+    <div *ngIf="address?.errors?.['required']">
+      address is required.
+    </div>
+    <div *ngIf="address?.errors?.['minlength']">
+      address must be at least 6 characters long.
+    </div>
+
+
+</div>
+</div>
+<div class="input">
+  <p><label>Credit Card Number: </label></p>
+  <input type='text' name='creditCard' #creditCard="ngModel" required  minlength="16" maxlength="16" placeholder="(16-digit number)" [(ngModel)]="model.creditCard">
+  <div *ngIf="creditCard?.invalid && (creditCard?.dirty || creditCard?.touched)" class="alert-danger">
+    <div *ngIf="creditCard?.errors?.['required']">
+      creditCard is required.
+    </div>
+    <div *ngIf="creditCard?.errors?.['minlength']">
+      creditCard must be 16-digit number.
+    </div>
+
+
+</div>
+</div>
+<br />
+        <span class="message">We'll never share your payment details with anyone else.</span>
+<br />
+  <input [disabled]="form.invalid" type='submit' value="Submit" class="btn" />
+</form>
